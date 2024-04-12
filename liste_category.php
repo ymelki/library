@@ -31,8 +31,8 @@ foreach ($category as $onecategorie){ ?>
 }
 ?>
 
-<button type="button" class="btn btn-success">
+<a href="create_category.php" class="btn btn-success">
     Add book
-</button>
+</a>
 </body>
 </html>

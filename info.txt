@@ -1,0 +1,8 @@
+1. Faire un MCD / MLD / MPD reprennant
+ les tables book, author, category, user.
+2. Faire le CRUD pour les tables du 1.
+3. Faire un systeme de recherche pour rechercher un livre.
+4. Faire un systeme d'inscription utilisateur
+5. Faire une authentification
+6. Faire un panier pour empreinter un livre
+7. Optimiser le code (fonctions, mvc , ...)
