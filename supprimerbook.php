@@ -10,15 +10,11 @@ $id=$_GET['id'];
  // 1 . Connecte à la B.D.
 $pdo = new \PDO('mysql:host=localhost;dbname=dblibrary', 'root', 'Decembre2020!');
 
-try {
-    $statement=$pdo->prepare("DELETE FROM category WHERE id=:id");
-    $statement->bindValue(":id",$id,PDO::PARAM_INT);
-    $statement->execute();
-} catch (PDOException $e){
-    if ($e->getCode()==23000) {
-        echo "Vous ne pouvez pas supprimer de catégorie qui sont déjà affecté à des livres.";
-    }
-}
+// 2 requete de suppression
+//$pdo->exec("DELETE FROM category WHERE idcategory=$id");
+$statement=$pdo->prepare("DELETE FROM book WHERE id=:id");
+$statement->bindValue(":id",$id,PDO::PARAM_INT);
+$statement->execute();
 
 // 3 redirection
 // header("location:liste_category.php");

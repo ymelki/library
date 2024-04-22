@@ -32,7 +32,7 @@ foreach ($category as $onecategorie){ ?>
 ?>
 
 <a href="create_category.php" class="btn btn-success">
-    Add book
+    Add category
 </a>
 </body>
 </html>
