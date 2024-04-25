@@ -3,7 +3,7 @@ include "header.php";
 $id=$_GET['id'];
 
 // 1 . Connecte à la B.D.
-$pdo = new \PDO('mysql:host=localhost;dbname=library', 'root', 'Decembre2020!');
+$pdo = new \PDO('mysql:host=localhost;dbname=dblibrary', 'root', 'Decembre2020!');
 
 // 2 . Requete 
 // prepare est une fonction permettant de faire

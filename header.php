@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,6 +53,18 @@ if (isset($_GET['search'])){
                         <i class="fa-solid fa-user-plus"></i>
                         Register</a>
                     </li>
+                    <?php
+                    if (isset($_SESSION['user'])){ ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="deconnexion.php">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            Deconnexion</a>
+                        </li>
+
+                    <?php
+                    }
+                    
+                    ?>
                 </ul>
                 
                 <form class="d-flex" role="search" action="search.php" method="GET">
