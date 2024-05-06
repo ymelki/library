@@ -1,7 +1,10 @@
 <?php
 session_start();
 // voir le panier
+echo "<pre>";
 var_dump($_SESSION);
+echo "</pre>";
+
 
 // enrichir les données pour avoir un panier qui affiche
 // le nom du livre
