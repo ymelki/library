@@ -14,6 +14,9 @@ var_dump($_SESSION);
         <td>book_name</td>
         <td>book_category</td>
         <td>price</td>
+        <td>Quantité</td>
+        <td>Total</td>
+        <td>Supprimer du panier</td>
     </tr>
     <?php
     $totalPrice=0;
@@ -21,7 +24,7 @@ var_dump($_SESSION);
         ?>
         <tr>
             <td>
-                <?=$row?>
+                <?=$key?>
 
                 <?php
 
@@ -29,7 +32,7 @@ var_dump($_SESSION);
     // 1 . Connecte à la B.D.
     $pdo = new \PDO('mysql:host=localhost;dbname=dblibrary', 'root', 'Decembre2020!');
 
-    $id_book=$_SESSION['cart'][$key];
+    $id_book=$key;
     $query="SELECT b.id as id_book,
                    b.name as book_name,
                    c.name as book_category,
@@ -45,6 +48,7 @@ var_dump($_SESSION);
 
     // 3 . Recupere
     $book=$statement->fetch(PDO::FETCH_ASSOC);
+    $total=$book['price']*$row;
 
 
 
@@ -52,12 +56,25 @@ var_dump($_SESSION);
                 <td><?=$book['book_name']?></td>
                 <td><?=$book['book_category']?></td>
                 <td><?=$book['price']?></td>
+                <td> <a href="reduire_quantite.php?id=<?=$key?>">-</a>
+                      <?=$row?>
+                      <a href="augmenter_quantite.php?id=<?=$key?>">+</a>
+                </td>
+                <td>
+                    <?=$total?>
+                </td>
+                <td><a href="supprimer_panier.php?id=<?=$key?>">
+                    Supprimer du panier
+                    </a>
+                </td>
             </td>
         </tr>
         <?php
-        $totalPrice=$totalPrice+$book['price'];
+        $totalPrice=$totalPrice+$total;
     }
     ?>
 
 </table>
 Total : <?=$totalPrice?>
+<br>
+<a href="viderpanier.php">Vider le panier</a>
