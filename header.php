@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include "function.php";
 var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ if (isset($_GET['search'])){
 
                     <?php
                     }
-                    
+
                     ?>
                 </ul>
                 

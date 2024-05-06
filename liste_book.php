@@ -1,46 +1,52 @@
 <?php
 include "header.php";
 
-
-// 1 . Connecte à la B.D.
-$pdo = new \PDO('mysql:host=localhost;dbname=library', 'root', 'Decembre2020!');
-
-$query="SELECT b.id as id_book, b.name as book_name, c.name as book_category
-FROM dblibrary.book as b 
-inner join dblibrary.category as c
-on b.category_id=c.id";
-
-
-// 2 . Requete 
-
-$statement=$pdo->query($query);
-
-
-// 3 . Recupere
-$books=$statement->fetchAll(PDO::FETCH_ASSOC);
+$books=getBooks();
 echo "<pre>";
-var_dump($books);
+// var_dump($books);
 echo "</pre>";
 
 
 ?>
+
+<div class="card-group">
+
 <?php
 foreach ($books as $book){ ?>
-    Nom : 
+  <div class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title"> Nom : 
     <a href="detailbook.php?id=<?=$book['id_book']?>">
         <?=$book['book_name']?> 
-    </a>
-    - Catégorie :  <?=$book['book_category']?> 
-    - <a href="edit_book.php?id=<?=$book['id_book']?>">
+    </a></h5>
+      <p class="card-text">
+      - Catégorie :  <?=$book['book_category']?> 
+      - <a href="edit_book.php?id=<?=$book['id_book']?>">
         Modifier
     </a> -
     <a href="supprimerbook.php?id=<?=$book['id_book']?>"> 
        Supprimer
     </a>
-    <br>
+      </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-body-secondary">
+        <a href="ajout_panier.php?id=<?=$book['id_book']?>">
+            Ajouter au panier
+        </a>
+        
+    </small>
+    </div>
+  </div>
 <?php
 }
 ?>
+</div>
 <a href="add_book.php" class="btn btn-success">Add book</a>
+
+
+
+
 </body>
 </html>
